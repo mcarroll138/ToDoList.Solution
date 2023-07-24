@@ -1,59 +1,48 @@
 ## What Is This?
+ 
+This is an example repo corresponding to multiple lessons within the LearnHowToProgram.com walkthrough on creating a To Do List application in [Section 3: Database Basics](https://www.learnhowtoprogram.com/c-and-net/database-basics).
+ 
+This project corresponds to the classwork and lessons that describe how to connect an ASP.NET Core MVC project to a MySQL database using [the MySqlConnector package](https://mysqlconnector.net/). Here are the lessons in the series:
 
-This is an example repo corresponding to multiple lessons within the LearnHowToProgram.com walkthrough on creating a To Do List application in [Section 2: Basic Web Applications](https://www.learnhowtoprogram.com/c-and-net/basic-web-applications).
-
-There are multiple branches in this repo that are described more below.
-
+- [Introduction to MySQL Workbench: Creating a Database](https://www.learnhowtoprogram.com/c-and-net/database-basics/introduction-to-mysql-workbench-creating-a-database)
+- [Connecting a Database to an ASP.NET Core App with MySqlConnector](https://www.learnhowtoprogram.com/c-and-net/database-basics/connecting-a-database-to-an-asp-net-core-app-with-mysqlconnector) 
+- [Retrieving Objects From the Database](https://www.learnhowtoprogram.com/c-and-net/database-basics/retrieving-objects-from-the-database)
+- [Testing Database Backed Applications](https://www.learnhowtoprogram.com/c-and-net/database-basics/testing-database-backed-applications)
+- [Creating a Test Database: Exporting and Importing Databases with MySQL Workbench](https://www.learnhowtoprogram.com/c-and-net/database-basics/creating-a-test-database-exporting-and-importing-databases-with-mysql-workbench)
+- [Using the Test Database](https://www.learnhowtoprogram.com/c-and-net/database-basics/using-the-test-database)
+- [Deleting Objects in the Database](https://www.learnhowtoprogram.com/c-and-net/database-basics/deleting-objects-in-the-database)
+- [Testing for an Empty Database](https://www.learnhowtoprogram.com/c-and-net/database-basics/testing-for-an-empty-database)
+- [Overriding Equals and GetHashCode](https://www.learnhowtoprogram.com/c-and-net/database-basics/overriding-equals-and-gethashcode)
+- [Saving Objects in the Database](https://www.learnhowtoprogram.com/c-and-net/database-basics/saving-objects-in-the-database)
+- [Finding Objects in the Database](https://www.learnhowtoprogram.com/c-and-net/database-basics/finding-objects-in-the-database)
+ 
 ## How To Run This Project
 
+### Install Tools
+
+Install the tools that are introduced in [this series of lessons on LearnHowToProgram.com](https://www.learnhowtoprogram.com/c-and-net/getting-started-with-c).
+
+### Set up the Databases
+
+Follow the instructions in the LearnHowToProgram.com lesson ["Introduction to MySQL Workbench: Creating a Database"](https://www.learnhowtoprogram.com/c-and-net/database-basics/introduction-to-mysql-workbench-creating-a-database) to create a `to_do_list_with_mysqlconnector` database with an `items` table.
+
+Next, follow the instructions in the LearnHowToProgram.com lesson ["Creating a Test Database: Exporting and Importing Databases with MySQL Workbench"](https://www.learnhowtoprogram.com/c-and-net/database-basics/creating-a-test-database-exporting-and-importing-databases-with-mysql-workbench) to create a `to_do_list_with_mysqlconnector_test` database with an `items` table.
+
+### Set Up and Run Project
+
 1. Clone this repo.
-2. Open your shell (e.g., Terminal or GitBash) and navigate to this project's production directory called "ToDoList". 
-3. Run `dotnet watch run` in the command line to start the project in development mode with a watcher.
+2. Open the terminal and navigate to this project's production directory called "ToDoList".
+3. Within the production directory "ToDoList", create a new file called `appsettings.json`.
+4. Within `appsettings.json`, put in the following code, replacing the `uid` and `pwd` values with your own username and password for MySQL. For the LearnHowToProgram.com lessons, we always assume the `uid` is `root` and the `pwd` is `epicodus`.
+
+```json
+{
+  "ConnectionStrings": {
+      "DefaultConnection": "Server=localhost;Port=3306;database=to_do_list_with_mysqlconnector;uid=root;pwd=epicodus;",
+      "TestConnection": "Server=localhost;Port=3306;database=to_do_list_with_mysqlconnector_test;uid=root;pwd=epicodus;"
+  }
+}
+```
+
+5. Within the production directory "ToDoList", run `dotnet watch run` in the command line to start the project in development mode with a watcher.
 4. Open the browser to _https://localhost:5001_. If you cannot access localhost:5001 it is likely because you have not configured a .NET developer security certificate for HTTPS. To learn about this, review this lesson: [Redirecting to HTTPS and Issuing a Security Certificate](https://www.learnhowtoprogram.com/c-and-net/basic-web-applications/redirecting-to-https-and-issuing-a-security-certificate).
-
-## Available Branches
-
-**1_mvc_setup**: this is the default branch with the starter code for the To Do List project as an ASP.NET Core MVC web application. The walkthrough of this example project starts in this lesson:
-
-- https://www.learnhowtoprogram.com/c-and-net/basic-web-applications/to-do-list-mvc-setup
-
-**2_forms_and_http_methods**: This branch includes the code we added after working through the following lessons:
-
-- https://www.learnhowtoprogram.com/c-and-net/basic-web-applications/to-do-list-with-mvc-forms
-- https://www.learnhowtoprogram.com/c-and-net/basic-web-applications/request-response-loop-and-http-methods-with-asp-net-mvc
-
-**3_list_redirects_loops_and_conditionals**: This branch includes the code we added after working through the following lessons:
-
-- https://www.learnhowtoprogram.com/c-and-net/basic-web-applications/lists-and-redirects-in-a-controller
-- https://www.learnhowtoprogram.com/c-and-net/basic-web-applications/loops-and-conditionals-with-razor
-
-**4_multiple_controllers**: This branch includes the code we added after working through the following lessons:
-
-- https://www.learnhowtoprogram.com/c-and-net/basic-web-applications/multiple-controllers
-
-**5_deleting_and_finding_objects**: This branch includes the code we added after working through the following lessons:
-
-- https://www.learnhowtoprogram.com/c-and-net/basic-web-applications/http-crud-methods
-- https://www.learnhowtoprogram.com/c-and-net/basic-web-applications/deleting-items
-- https://www.learnhowtoprogram.com/c-and-net/basic-web-applications/finding-objects-with-unique-ids
-
-**6_applying_restful_routing**: This branch includes the code we added after working through the following lessons:
-
-- https://www.learnhowtoprogram.com/c-and-net/basic-web-applications/introduction-to-restful-routing
-- https://www.learnhowtoprogram.com/c-and-net/basic-web-applications/applying-restful-routing
-
-**7_objects_within_objects_setup**: This branch includes the code we added after working through the following lessons:
-
-- https://www.learnhowtoprogram.com/c-and-net/basic-web-applications/objects-within-objects-setup
-
-**8_saving_OWO_and_interface_update**: This branch includes the code we added after working through the following lessons:
-
-- https://www.learnhowtoprogram.com/c-and-net/basic-web-applications/saving-objects-within-other-objects
-- https://www.learnhowtoprogram.com/c-and-net/basic-web-applications/objects-within-objects-interface-part-1
-- https://www.learnhowtoprogram.com/c-and-net/basic-web-applications/objects-within-objects-interface-part-2
-
-**9_static_content_layouts_and_partials**: This branch includes the code we added after working through the following lessons:
-
-- https://www.learnhowtoprogram.com/c-and-net/basic-web-applications/using-static-content
-- https://www.learnhowtoprogram.com/c-and-net/basic-web-applications/layouts-and-partials
-
